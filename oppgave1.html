@@ -3,7 +3,155 @@
   <head>
     <meta charset="utf-8">
     <title>Oppgave 1</title>
+    <script>
+      window.onload = knapper;
+
+      function knapper() {
+        document.getElementById("btnUtskrift").onclick = utskrift;
+        document.getElementById("btnBaklengs").onclick = baklengsUtskrift;
+        document.getElementById("btnAnnenhver").onclick = annenhvert;
+        document.getElementById("btnMindreEnn").onclick = lessThan10;
+        document.getElementById("btnPar").onclick = partall;
+        document.getElementById("btnSum").onclick = sumRes;
+        document.getElementById("btnLengde").onclick = lengde;
+        document.getElementById("btnGjennomsnitt").onclick = gjennomsnitt;
+        document.getElementById("btnSummerPar").onclick = sumParTall;
+        document.getElementById("btnMinste").onclick = minsteElement;
+        document.getElementById("finnX").onclick = finnVerdi;
+        document.getElementById("finnXAntall").onclick = antallForekomster;
+      }
+
+      var array = [1, 11, 85, 53, 92, 23, 11, 64];
+
+      function utskrift() {
+        // Skriver ut arrayen
+        document.getElementById("utskrift").innerHTML = array.join(", ");
+      }
+
+      function baklengsUtskrift() {
+        // Skriver ut arrayen baklengs
+        document.getElementById("baklengsutskrift").innerHTML = array.reverse();
+      }
+
+      function annenhvert() {
+        // Skriver ut annenhvert tall i arrayen
+        for (i = 0; i < array.length; i++) {
+          if (i % 2 !== 0) {
+            var oddetall = array[i] + ", ";
+            document.getElementById("annenhverttallutskrift").innerHTML += oddetall;
+          }
+        }
+      }
+
+      function lessThan10() {
+        // Skriv ut tallene som er mindre enn 10 i arrayen.
+        for (i = 0; i < array.length; i++) {
+          if (array[i] < 10) {
+            var mindreEnnTi = array[i] + ".";
+            document.getElementById("mindreti").innerHTML += mindreEnnTi;
+          }
+        }
+      }
+
+      function partall() {
+        // Skriv ut alle partall i arrayen.
+        for (i = 0; i < array.length; i++) {
+          if (array[i] % 2 == 0) {
+            var partall = array[i] + ", ";
+            document.getElementById("deleligPaa2").innerHTML += partall;
+          }
+        }
+      }
+
+      function summer(a, b) {
+        return a + b;
+      }
+      function sumRes() {
+        // Summen av arrayen
+        document.getElementById("sum").innerHTML = array.reduce(summer);
+      }
+
+      function lengde() {
+        // Lengden av arrayet
+        document.getElementById("lengde").innerHTML = array.length;
+      }
+
+      function gjennomsnitt() {
+        // Gjennomsnittet på verdiene i arrayen. Summer alle verdiene og del på lengden av arrayet.
+        document.getElementById("gjennomsnittUtskrift").innerHTML = array.reduce(summer) / array.length;
+      }
+
+      function sumParTall() {
+        // Summer alle partall.
+        var partall = 0;
+        for (i = 0; i < array.length; i++) {
+          if (array[i] % 2 == 0) {
+            partall += array[i];
+            document.getElementById("summerParTallUtskrift").innerHTML = partall;
+          }
+        }
+      }
+
+      function minsteElement() {
+        // Finner den minste verdien i arrayet.
+        var res = array[0];
+        for (i = 0; i < array.length; i++) {
+          if (array[i] < res) {
+            res = array[i];
+          }
+        }
+        document.getElementById("minsteUtskrift").innerHTML = res;
+      }
+
+      function finnVerdi() {
+        // If-testen leter etter en spesifikk verdi i arrayen.
+        for (i = 0; i <array.length; i++) {
+          if (array[i] == 23) {
+            document.getElementById("finnVerdiUtskrift").innerHTML = "Verdien 23 eksisterer i arrayen. Den kan finnes på indexplassen " + i + ".";
+          }
+        }
+      }
+
+      function antallForekomster() {
+        // Finner hvor mange forekomster det er av en bestemt verdi.
+        var tilfeller = 0;
+        for (a = 0; a < array.length; a++) {
+          for (i = 0; i < array.length; i++) {
+          }
+          if (array[a] == 11) {
+            tilfeller++
+          }
+        }
+        document.getElementById("antallForekomsterUtskrift").innerHTML = tilfeller;
+      }
+    </script>
   </head>
   <body>
+    <div class="wrapper">
+      <button type="button" id="btnUtskrift">Skriv ut alle tallene i arrayen</button>
+      <p id="utskrift"></p>
+      <button type="button" id="btnBaklengs">Skriv ut tallene i arrayen baklengs</button>
+      <p id="baklengsutskrift"></p>
+      <button type="button" id="btnAnnenhver">Annenhvert tall i arrayen</button>
+      <p id="annenhverttallutskrift"></p>
+      <button type="button" id="btnMindreEnn">Alle tall som er mindre enn 10</button>
+      <p id="mindreti"></p>
+      <button type="button" id="btnPar">Partall</button>
+      <p id="deleligPaa2"></p>
+      <button type="button" id="btnSum">Summer alle tallene i arrayen</button>
+      <p id="sum"></p>
+      <button type="button" id="btnLengde">Finn lengden på arrayet</button>
+      <p id="lengde"></p>
+      <button type="button" id="btnGjennomsnitt">Finn gjennomsnittet på verdiene i arrayen</button>
+      <p id="gjennomsnittUtskrift"></p>
+      <button type="button" id="btnSummerPar">Summer alle partallene i arrayen</button>
+      <p id="summerParTallUtskrift"></p>
+      <button type="button" id="btnMinste">Minste element i arrayen</button>
+      <p id="minsteUtskrift"></p>
+      <button type="button" id="finnX">Let etter verdien "23"</button>
+      <p id="finnVerdiUtskrift"></p>
+      <button type="button" id="finnXAntall">Antall ganger verdien 11 forekommer </button>
+      <p id="antallForekomsterUtskrift"></p>
+    </div>
   </body>
 </html>
