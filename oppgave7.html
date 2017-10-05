@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 7</title>
+    <script>
+      window.onload = oppstart;
+
+      function innenForInterval(tall, fra, til) {
+        return (tall >= fra && tall <= til);
+      }
+
+      function oppstart() {
+        document.getElementById("utskrift1").innerHTML = "Er tallet 8 mellom 1 og 10? " +
+        innenForInterval(8, 1, 10);
+
+        document.getElementById("utskrift2").innerHTML = "Hva med tallet 56 mellom 73 og 1000? "
+        + innenForInterval(56, 73, 1000);
+
+        document.getElementById("btn").onclick = beregnFraInput;
+      }
+
+      function beregnFraInput() {
+        var tallBruker = parseInt(document.getElementById("inputTall").value);
+        var fraBruker = parseInt(document.getElementById("inputFra").value);
+        var tilBruker = parseInt(document.getElementById("inputTil").value);
+        console.log(tallBruker, fraBruker, tilBruker);
+
+        console.log(innenForInterval(tallBruker, fraBruker, tilBruker))
+
+        document.getElementById("utskrift3").innerHTML = "Er " + tallBruker + " et tall som er mellom "
+        + fraBruker + " til " + tilBruker + " ? " + innenForInterval(tallBruker, fraBruker, tilBruker);
+      }
+
+    </script>
+  </head>
+  <body>
+    <p id="utskrift1"></p>
+    <p id="utskrift2"></p>
+    <h4>Prøv selv:</h4>
+    <input type="number" id="inputTall" placeholder="Tall" />
+    <input type="number" id="inputFra" placeholder="Fra" />
+    <input type="number" id="inputTil" placeholder="Til" />
+    <button type="button" id="btn">Finn ut</button>
+    <p id="utskrift3"></p>
+  </body>
+</html>

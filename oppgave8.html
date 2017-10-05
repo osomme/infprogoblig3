@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Oppgave 8</title>
+    <script>
+      window.onload = oppstart;
+
+      var array = [53, 23, 12, 73, 26, 92, 85, 9]
+
+      function oppstart() {
+        document.getElementById("storstTall").innerHTML = storstTallet(array, array);
+        document.getElementById("sum").innerHTML = array.reduce(summer);
+        document.getElementById("gjennomsnittUtskrift").innerHTML = array.reduce(summer) / array.length;
+        document.getElementById("btn").onclick = arraySjekk;
+      }
+
+      function arraySjekk() {
+        var brukerInput = document.getElementById("verdiInput").value;
+        document.getElementById("bestemtUtskrift").innerHTML = finnVerdi(array, brukerInput);
+      }
+
+      function storstTallet(a, b) {
+        var res = b[0];
+
+        for (var i = 0; i < array.length; i++) {
+          if (a[i] > res) {
+            res = a[i];
+          }
+        }
+        return res;
+      }
+
+      function summer(a, b) {
+        return a + b;
+      }
+
+      function finnVerdi(a, b) {
+        for (i = 0; i <array.length; i++) {
+          if (a[i] == b) {
+            return "Verdien " + b + " eksisterer i arrayen!";
+          }
+        }
+        return "Verdien " + b + " eksisterer IKKE i arrayen.";
+      }
+    </script>
+  </head>
+  <body>
+    Det største tallet i arrayen er: <p id="storstTall"></p>
+    Summen av arrayet er: <p id="sum"></p>
+    Gjennomsnittet i arrayen er: <p id="gjennomsnittUtskrift"></p>
+    <input type="number" id="verdiInput" placeholder="Sjekk om en verdi eksisterer i arrayet" />
+    <button type="button" id="btn">Sjekk</button>
+    <p id="bestemtUtskrift"></p>
+  </body>
+</html>
