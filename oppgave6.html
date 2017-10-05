@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 6A</title>
+    <script>
+      window.onload = oppstart;
+
+      function oppstart() {
+        document.getElementById("btn").onclick = utfor;
+      }
+
+      function utfor() {
+        document.getElementById("utskrift").innerHTML = "";
+        var inputTxt = document.getElementById("input").value.split("");
+        console.log(inputTxt);
+
+        var bildeLeggTil = {a: "a.png", b: "b.png", c: "c.png", d: "d.png"};
+
+        for (i = 0; i < inputTxt.length; i++) {
+          if (inputTxt in bildeLeggTil) {
+            document.getElementById("utskrift").innerHTML += bildeLeggTil[inputTxt];
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    Skriv inn en tekst: <input type="text" id="input" />
+    <button type="button" id="btn">Trykk her</button>
+    <p id="utskrift"></p>
+  </body>
+</html>

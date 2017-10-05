@@ -20,8 +20,9 @@
         for (i = 0; i < 3; i++) {
           var res = Math.floor(Math.random() * navn.length);
           if (i < 2) {
-            document.getElementById("utskrift").innerHTML += navn[res] + ", "; // Skriver ut de to første navnene med komma bak.
-            navn.splice(res, 1); // Fjerner navnet som er trukket ut fra arrayen.
+            // Skriver ut de to første navnene med komma bak.
+            document.getElementById("utskrift").innerHTML += navn[res] + ", ";
+            navn.splice(res, 1); // Fjerner navnet som er trukket av res ut fra arrayen.
           }
         }
         // For å ikke ha komma etter siste navn:
