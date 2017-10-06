@@ -1,10 +1,44 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Oppgave 5C</title>
+    <meta charset="utf-8" />
+    <title>Oppgave 5B</title>
+    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
+    <script>
+      window.onload = oppstart;
+
+      function oppstart() {
+        document.getElementById("btn").onclick = utfor;
+      }
+
+      function utfor() {
+        document.getElementById("utskrift").innerHTML = "";
+
+        var utArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        var input = document.getElementById("arrInput").value.toString();
+        var inputArr = input.split(",");
+
+        for (var i = 0; i < inputArr.length; i++) {
+          utArray[inputArr[i]]++
+        }
+
+        for (var a = 0; a < utArray.length; a++) {
+          if (utArray[a] > 0) {
+            var utskrift = document.createElement("P");
+            utskrift.innerHTML = "Antall hendelser av " + a + ": " + "<span>"
+            + utArray[a]; + "</span>"
+            utskrift.style.width = (utArray[a]*150) + "px";
+
+            document.getElementById("utskrift").appendChild(utskrift);
+          }
+        }
+      }
+    </script>
   </head>
   <body>
-    
+    <input type="text" id="arrInput" placeholder="Skriv inn tall" />
+    <button type="button" id="btn">Lag array</button>
+    <div id="utskrift"></div>
   </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Oppgave 6A</title>
     <script>
-      window.onload = oppstart();
+      window.onload = oppstart;
 
       function oppstart() {
         document.getElementById("btn").onclick = utfor;
@@ -12,16 +12,35 @@
 
       function utfor() {
         document.getElementById("utskrift").innerHTML = "";
-        var inputTxt = document.getElementById("input").value.split("");
-        console.log(inputTxt.length);
-        var bildeLeggTil = {a: "a.png",
-                            b: "b.png",
-                            c: "c.png",
-                            d: "d.png"};
+        var inputTxt = document.getElementById("input").value.toLowerCase();
+
+        var bildeLeggTil = {a: "bilder/a.png", b: "bilder/b.png",
+                            c: "bilder/c.png", d: "bilder/d.png",
+                            e: "bilder/e.png", f: "bilder/f.png",
+                            g: "bilder/g.png", h: "bilder/h.png",
+                            i: "bilder/i.png", j: "bilder/j.png",
+                            k: "bilder/k.png", l: "bilder/l.png",
+                            m: "bilder/m.png", n: "bilder/n.png",
+                            o: "bilder/o.png", p: "bilder/p.png",
+                            q: "bilder/q.png", r: "bilder/r.png",
+                            s: "bilder/s.png", t: "bilder/t.png",
+                            u: "bilder/u.png", v: "bilder/v.png",
+                            w: "bilder/w.png", x: "bilder/x.png",
+                            y: "bilder/y.png", z: "bilder/z.png",
+                            ø: "bilder/oe.png", å: "bilder/aa.png",
+                            æ: "bilder/ae.png", 0: "bilder/0.png",
+                            1: "bilder/1.png", 2: "bilder/2.png",
+                            3: "bilder/3.png", 4: "bilder/4.png",
+                            5: "bilder/5.png", 6: "bilder/6.png",
+                            7: "bilder/7.png", 8: "bilder/8.png",
+                            9: "bilder/9.png", " ": "bilder/space.png",
+                            ".": "bilder/punkt.png", "!": "bilder/utropstegn.png",
+                            ",": "bilder/komma.png", "?": "bilder/question.png"};
 
         for (var i = 0; i < inputTxt.length; i++) {
-          if (inputTxt in bildeLeggTil) {
-            document.getElementById("utskrift").innerHTML += bildeLeggTil[inputTxt];
+          if (inputTxt[i] in bildeLeggTil) {
+            document.getElementById("utskrift").innerHTML += "<img src=\"" +
+            bildeLeggTil[inputTxt[i]] + "\">";
           }
         }
       }
@@ -31,6 +50,6 @@
     Skriv inn en tekst: <input type="text" id="input" />
     <button type="button" id="btn">Trykk her</button>
     <p id="utskrift"></p>
-    <p id="utskrift2"></p>
+    <p id="feilmelding"></p>
   </body>
 </html>

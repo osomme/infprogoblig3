@@ -1,0 +1,20 @@
+@import "normalize.css";
+
+
+/* De tre elementene under gjelder for oppgave 5 a og b. */
+div p {
+  background-color: black;
+  color: orange;
+  height: 70px;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+div p:nth-child(odd) {
+  background-color: orange;
+  color: black;
+}
+span {
+  font-weight: bolder;
+  margin-left: 92%;
+  font-size: 24px;
+}
