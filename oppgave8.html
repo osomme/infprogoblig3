@@ -9,7 +9,7 @@
       var array = [53, 23, 12, 73, 26, 92, 85, 9];
 
       function oppstart() {
-        document.getElementById("storstTall").innerHTML = storstTallet(array, array);
+        document.getElementById("storstTall").innerHTML = storstVerdi(array);
         document.getElementById("sum").innerHTML = array.reduce(summer);
         document.getElementById("gjennomsnittUtskrift").innerHTML = array.reduce(summer) / array.length;
         document.getElementById("btn").onclick = arraySjekk;
@@ -20,9 +20,8 @@
         document.getElementById("bestemtUtskrift").innerHTML = finnVerdi(array, brukerInput);
       }
 
-      function storstTallet(a, b) {
-        var res = b[0];
-
+      function storstVerdi(a) {
+        var res = a[0];
         for (var i = 0; i < array.length; i++) {
           if (a[i] > res) {
             res = a[i];

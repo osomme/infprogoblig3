@@ -8,7 +8,8 @@
       window.onload = oppstart;
 
       function oppstart() {
-        document.getElementById("btn").onclick = utfor;
+        document.getElementById("arrInput").oninput = utfor;
+        document.getElementById("btn").onclick = clear;
       }
 
       function utfor() {
@@ -16,10 +17,18 @@
 
         var utArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        var input = document.getElementById("arrInput").value.toString();
-        var inputArr = input.split(",");
+        var input = document.getElementById("arrInput").value + ",";
+        document.getElementById("arrInput").value = input;
+        var inputArr = input.toString().split(",");
+
+        if (input == ",") {
+          document.getElementById("arrInput").value = "";
+        }
 
         for (var i = 0; i < inputArr.length; i++) {
+          if (isNaN(inputArr[i])) {
+            document.getElementById("feilmelding").innerHTML = "Skriv kun tall.";
+          }
           utArray[inputArr[i]]++
         }
 
@@ -27,18 +36,29 @@
           if (utArray[a] > 0) {
             var utskrift = document.createElement("P");
             utskrift.innerHTML = "Antall hendelser av " + a + ": " + "<span>"
-            + utArray[a]; + "</span>"
+            + utArray[a]; + "</span>";
             utskrift.style.width = (utArray[a]*150) + "px";
 
             document.getElementById("utskrift").appendChild(utskrift);
           }
         }
+        document.getElementById("stats").innerHTML = "Arrayen består av " +
+        (inputArr.length - 1) + " tall.";
+      }
+
+      function clear() {
+        document.getElementById("arrInput").value = "";
+        document.getElementById("utskrift").innerHTML = "";
+        document.getElementById("stats").innerHTML = "";
+        document.getElementById("feilmelding").innerHTML = "";
       }
     </script>
   </head>
   <body>
     <input type="text" id="arrInput" placeholder="Skriv inn tall" />
-    <button type="button" id="btn">Lag array</button>
+    <button type="button" id="btn">Clear</button>
+    <h5 id="feilmelding"></h5>
+    <h4 id="stats"></h4>
     <div id="utskrift"></div>
   </body>
 </html>

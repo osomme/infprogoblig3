@@ -20,7 +20,6 @@
         for (i = 0; i < 3; i++) {
           var res = Math.floor(Math.random() * navn.length);
           if (i < 2) {
-            // Skriver ut de to første navnene med komma bak.
             document.getElementById("utskrift").innerHTML += navn[res] + ", ";
             navn.splice(res, 1); // Fjerner navnet som er trukket av res ut fra arrayen.
           }
