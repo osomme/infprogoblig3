@@ -5,6 +5,8 @@
     <title>Oppgave 1</title>
     <script>
       window.onload = knapper;
+      var stringArray = ["test","test","test","test","test","test"];
+      var array = [1, 11, 85, 53, 92, 23, 11, 64];
 
       function knapper() {
         document.getElementById("btnUtskrift").onclick = utskrift;
@@ -13,7 +15,7 @@
         document.getElementById("btnMindreEnn").onclick = lessThan10;
         document.getElementById("btnPar").onclick = partall;
         document.getElementById("btnSum").onclick = sumRes;
-        document.getElementById("btnLengde").onclick = lengde;
+        document.getElementById("btnLengde").onclick = lengde(stringArray);
         document.getElementById("btnGjennomsnitt").onclick = gjennomsnitt;
         document.getElementById("btnSummerPar").onclick = sumParTall;
         document.getElementById("btnMinste").onclick = minsteElement;
@@ -21,16 +23,39 @@
         document.getElementById("finnXAntall").onclick = antallForekomster;
       }
 
-      var array = [1, 11, 85, 53, 92, 23, 11, 64];
+      function lengde(arrayNavn) {
+        // Lengden av arrayet
+        var x = 0;
+        while (arrayNavn[x] !== undefined) {
+          x++;
+        }
+        for (var i = 0; i <= x; i++) {
+          document.getElementById("lengde").innerHTML = i;
+        }
+      }
 
       function utskrift() {
         // Skriver ut arrayen
-        document.getElementById("utskrift").innerHTML = array.join(", ");
+        var skrivUt = "";
+        for (var i = 0; i < array.length; i++) {
+          if (i < (array.length - 1)) {
+            skrivUt = array[i];
+            document.getElementById("utskrift").innerHTML += skrivUt + ", ";
+          }
+        }
+        document.getElementById("utskrift").innerHTML += array[array.length - 1] + ".";
       }
 
       function baklengsUtskrift() {
         // Skriver ut arrayen baklengs
-        document.getElementById("baklengsutskrift").innerHTML = array.reverse();
+        var skrivUt = "";
+        for (var i = (array.length - 1); i >= 0; i--) {
+          if (i >= 1) {
+            skrivUt = array[i];
+            document.getElementById("baklengsutskrift").innerHTML += skrivUt + ", ";
+          }
+        }
+        document.getElementById("baklengsutskrift").innerHTML += array[0] + ".";
       }
 
       function annenhvert() {
@@ -63,22 +88,22 @@
         }
       }
 
-      function summer(a, b) {
-        return a + b;
-      }
       function sumRes() {
         // Summen av arrayen
-        document.getElementById("sum").innerHTML = array.reduce(summer);
-      }
-
-      function lengde() {
-        // Lengden av arrayet
-        document.getElementById("lengde").innerHTML = array.length;
+        var sum = 0;
+        for (i = 0; i < array.length; i++) {
+          sum += array[i];
+        }
+        document.getElementById("sum").innerHTML = sum;
       }
 
       function gjennomsnitt() {
         // Gjennomsnittet på verdiene i arrayen. Summer alle verdiene og del på lengden av arrayet.
-        document.getElementById("gjennomsnittUtskrift").innerHTML = array.reduce(summer) / array.length;
+        var sum = 0;
+        for (i = 0; i < array.length; i++) {
+          sum += array[i];
+        }
+        document.getElementById("gjennomsnittUtskrift").innerHTML = sum / array.length;
       }
 
       function sumParTall() {
