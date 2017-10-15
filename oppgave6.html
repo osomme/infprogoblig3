@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Oppgave 6A</title>
+    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
     <script>
       window.onload = oppstart;
 
       function oppstart() {
-        document.getElementById("btn").onclick = utfor;
+        document.getElementById("input").oninput = utfor;
+        document.getElementById("btn").onclick = clear;
       }
 
       function utfor() {
@@ -44,12 +46,19 @@
           }
         }
       }
+
+      function clear() {
+        document.getElementById("input").value = "";
+        document.getElementById("utskrift").innerHTML = "";
+      }
     </script>
   </head>
-  <body>
-    Skriv inn en tekst: <input type="text" id="input" />
-    <button type="button" id="btn">Trykk her</button>
-    <p id="utskrift"></p>
-    <p id="feilmelding"></p>
+  <body id="opg6-body">
+    <div class="wrapper" id="opg6">
+      Skriv inn en tekst: <input type="text" id="input" />
+      <button type="button" id="btn">Clear</button>
+      <p id="utskrift"></p>
+      <p id="feilmelding"></p>
+    </div>
   </body>
 </html>

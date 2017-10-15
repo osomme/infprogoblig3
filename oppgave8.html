@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Oppgave 8</title>
+    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
     <script>
       window.onload = oppstart;
 
@@ -12,12 +13,14 @@
         document.getElementById("storstTall").innerHTML = storstVerdi(array);
         document.getElementById("sum").innerHTML = array.reduce(summer);
         document.getElementById("gjennomsnittUtskrift").innerHTML = array.reduce(summer) / array.length;
+        document.getElementById("lengde").innerHTML = lengde(array);
         document.getElementById("btn").onclick = arraySjekk;
       }
 
       function arraySjekk() {
         var brukerInput = document.getElementById("verdiInput").value;
-        document.getElementById("bestemtUtskrift").innerHTML = finnVerdi(array, brukerInput);
+        document.getElementById("bestemtUtskrift").innerHTML = finnVerdi(array, brukerInput) +
+        "<br />" + "Verdiene i arreyet er:" + "<br />" + array + ".";
       }
 
       function storstVerdi(a) {
@@ -35,6 +38,7 @@
       }
 
       function finnVerdi(a, b) {
+        // Sjekker om verdien
         for (i = 0; i <array.length; i++) {
           if (a[i] == b) {
             return "Verdien " + b + " eksisterer i arrayen!";
@@ -42,14 +46,23 @@
         }
         return "Verdien " + b + " eksisterer IKKE i arrayen.";
       }
+
+      function lengde(arrayNavn) {
+        // Lengden av arrayet
+        for (var x = 0; arrayNavn[x] !== undefined; x++) {}
+        return x;
+      }
     </script>
   </head>
   <body>
-    Det største tallet i arrayen er: <p id="storstTall"></p>
-    Summen av arrayet er: <p id="sum"></p>
-    Gjennomsnittet i arrayen er: <p id="gjennomsnittUtskrift"></p>
-    <input type="number" id="verdiInput" placeholder="Sjekk om en verdi eksisterer i arrayet" />
-    <button type="button" id="btn">Sjekk</button>
-    <p id="bestemtUtskrift"></p>
+    <div class="wrapper" id="opg8">
+      Det største tallet i arrayen er: <p id="storstTall"></p>
+      Summen av arrayet er: <p id="sum"></p>
+      Gjennomsnittet i arrayen er: <p id="gjennomsnittUtskrift"></p>
+      Lengden av arrayet er: <p id="lengde"></p>
+      <input type="number" id="verdiInput" placeholder="Sjekk om en verdi eksisterer i arrayet" />
+      <button type="button" id="btn">Sjekk</button>
+      <p id="bestemtUtskrift"></p>
+    </div>
   </body>
 </html>

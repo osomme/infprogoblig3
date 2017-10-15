@@ -1,20 +1,65 @@
 @import "normalize.css";
 
+body {
+  background-color: #333;
+  color: white;
+}
+
+div.wrapper {
+  margin: 10px auto;
+  border: 2px solid white;
+  max-width: 800px;
+  text-align: center;
+}
+
+a {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  color: white;
+}
 
 /* De tre elementene under gjelder for oppgave 5 a og b. */
-div p {
+#utskrift p {
   background-color: black;
   color: orange;
   height: 70px;
   padding-left: 20px;
   padding-top: 5px;
 }
-div p:nth-child(odd) {
+
+#utskrift p:nth-child(odd) {
   background-color: orange;
   color: black;
 }
+
+#arrInput {
+  margin-top: 50px;
+}
+
 span {
   font-weight: bolder;
   margin-left: 92%;
   font-size: 24px;
+}
+
+/* Oppgave 6 */
+div#opg6 {
+  background-color: white;
+  color: black;
+  width: 100%;
+  max-width: 100%;
+}
+
+body#opg6-body {
+  background-color: white;
+}
+
+/* Oppgave 8 */
+#verdiInput {
+  width: 300px;
+}
+
+#opg8 {
+  font-weight: bolder;
 }

@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Oppgave 5B</title>
+    <title>Oppgave 5A og B</title>
     <link rel="stylesheet" type="text/css" href="css/minstil.css" />
     <script>
       window.onload = oppstart;
 
       function oppstart() {
         document.getElementById("arrInput").oninput = utfor;
-        document.getElementById("btn").onclick = clear;
+        document.getElementById("btn5").onclick = clear;
       }
 
       function utfor() {
@@ -21,12 +21,8 @@
         document.getElementById("arrInput").value = input;
         var inputArr = input.toString().split(",");
 
-        if (input == ",") {
-          document.getElementById("arrInput").value = "";
-        }
-
         for (var i = 0; i < inputArr.length; i++) {
-          if (isNaN(inputArr[i])) {
+          if (isNaN(inputArr[i]) || document.getElementById("arrInput").value == ",,") {
             document.getElementById("feilmelding").innerHTML = "Skriv kun tall.";
           }
           utArray[inputArr[i]]++
@@ -55,10 +51,12 @@
     </script>
   </head>
   <body>
-    <input type="text" id="arrInput" placeholder="Skriv inn tall" />
-    <button type="button" id="btn">Clear</button>
-    <h5 id="feilmelding"></h5>
-    <h4 id="stats"></h4>
+    <div class="wrapper">
+      <input type="text" id="arrInput" placeholder="Skriv inn tall" />
+      <button type="button" id="btn5">Clear</button>
+      <h5 id="feilmelding"></h5>
+      <h4 id="stats"></h4>
+    </div>
     <div id="utskrift"></div>
   </body>
 </html>

@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Oppgave 3</title>
+    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
     <script>
       window.onload = utfor;
 
       var navn = ["Per", "Olav", "Hans", "Pia", "Kari", "Nils", "Line", "Magnus", "Tom", "Ole"];
 
       function utfor() {
+        document.getElementById("forklaring").innerHTML = "Vi trekker tre \
+         tilfeldige navn fra lista:" + "<br />" + navn + ".";
         for (i = 0; i < 3; i++) {
           var res = Math.floor(Math.random()* navn.length);
           if (i < 2) {
@@ -21,6 +24,10 @@
     </script>
   </head>
   <body>
-    <p id="utskrift"></p>
+    <div class="wrapper">
+      <p id="forklaring"></p>
+      <p>Og får:</p>
+      <p id="utskrift" style="font-weight: bolder;"></p>
+    </div>
   </body>
 </html>
