@@ -8,14 +8,17 @@
       window.onload = oppstart;
 
       function oppstart() {
-        document.getElementById("input").oninput = utfor;
+        document.getElementById("input").oninput = utfor; // oninput = hver gang noe tastes inn i feltet.
         document.getElementById("btn").onclick = clear;
       }
 
       function utfor() {
+        // Sletter det som står i utskrift fra før av.
         document.getElementById("utskrift").innerHTML = "";
+        // Gjør om all input til liten bokstav, siden nøkkelen i arrayet er case-sensitiv.
         var inputTxt = document.getElementById("input").value.toLowerCase();
 
+        // Arrayet inneholder alle bildene som hører til hver nøkkel.
         var bildeLeggTil = {a: "bilder/a.png", b: "bilder/b.png",
                             c: "bilder/c.png", d: "bilder/d.png",
                             e: "bilder/e.png", f: "bilder/f.png",
@@ -39,6 +42,9 @@
                             ".": "bilder/punkt.png", "!": "bilder/utropstegn.png",
                             ",": "bilder/komma.png", "?": "bilder/question.png"};
 
+        /* Løkka går gjennom alle nøkkelordene i arrayet og sjekker
+         om inputbokstaven er lik en nøkkel i arrayet. Hvis den er lik,
+         skrives bildet som hører til nøkkelen ut */
         for (var i = 0; i < inputTxt.length; i++) {
           if (inputTxt[i] in bildeLeggTil) {
             document.getElementById("utskrift").innerHTML += "<img src=\"" +
@@ -47,6 +53,7 @@
         }
       }
 
+      // Sletter alt på siden.
       function clear() {
         document.getElementById("input").value = "";
         document.getElementById("utskrift").innerHTML = "";
@@ -58,7 +65,6 @@
       Skriv inn en tekst: <input type="text" id="input" />
       <button type="button" id="btn">Clear</button>
       <p id="utskrift"></p>
-      <p id="feilmelding"></p>
     </div>
   </body>
 </html>

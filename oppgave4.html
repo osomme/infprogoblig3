@@ -1,39 +1,42 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Oppgave 4</title>
-    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
-    <script>
-      window.onload = utfor;
 
-      /* Hvis navnene var skrevet på papir ville jeg lukket øyene og valgt et
-      * tilfeldig navn fra lista på papiret. Når jeg har valgt et navn, skriver jeg
-      * det ned. Etter jeg har skrevet det ned ville jeg visket det ut fra listen
-      * over mulige navn. Etter jeg har gjentatt denne prosessen tre ganger har jeg
-      * tre navn som er trukket ut fra en liste.
-      */
+<head>
+  <meta charset="utf-8">
+  <title>Oppgave 4</title>
+  <link rel="stylesheet" type="text/css" href="css/minstil.css" />
+  <script>
+    window.onload = utfor;
+
+    /* Hvis navnene var skrevet på papir ville jeg lukket øyene og valgt et
+     * tilfeldig navn fra lista på papiret. Når jeg har valgt et navn, skriver jeg
+     * det ned. Etter jeg har skrevet det ned ville jeg visket det ut fra listen
+     * over mulige navn. Etter jeg har gjentatt denne prosessen tre ganger har jeg
+     * tre navn som er trukket ut fra en liste.
+     */
 
 
-      function utfor() {
-        var navn = ["Per", "Olav", "Hans", "Pia", "Kari", "Nils", "Line", "Magnus", "Tom", "Ole"];
+    function utfor() {
+      var navn = ["Per", "Olav", "Hans", "Pia", "Kari", "Nils", "Line", "Magnus", "Tom", "Ole"];
 
-        for (i = 0; i < 3; i++) {
-          var res = Math.floor(Math.random() * navn.length);
-          if (i < 2) {
-            document.getElementById("utskrift").innerHTML += navn[res] + ", ";
-            navn.splice(res, 1); // Fjerner navnet som er trukket av res ut fra arrayen.
-          }
+      for (i = 0; i < 3; i++) {
+        var res = Math.floor(Math.random() * navn.length);
+        if (i < 2) {
+          document.getElementById("utskrift").innerHTML += navn[res] + ", ";
+          navn.splice(res, 1); // Fjerner navnet som er trukket av res ut fra arrayen.
         }
-        // For å ikke ha komma etter siste navn:
-        document.getElementById("utskrift").innerHTML += " " + navn[res] + ".";
       }
-    </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <p>Her trekker vi tre navn fra den samme lista, men nå vil vi ikke at det skal være mulig å trekke samme navn to ganger.</p>
-      <p id="utskrift" style="font-weight: bolder;"></p>
-    </div>
-  </body>
+      // For å ikke ha komma etter siste navn:
+      document.getElementById("utskrift").innerHTML += " " + navn[res] + ".";
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <p>Her trekker vi tre navn fra den samme lista, men nå vil vi ikke at det skal være mulig å trekke samme navn to ganger.</p>
+    <p id="utskrift" style="font-weight: bolder;"></p>
+  </div>
+</body>
+
 </html>

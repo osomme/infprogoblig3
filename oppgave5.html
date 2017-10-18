@@ -1,62 +1,73 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Oppgave 5A og B</title>
-    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
-    <script>
-      window.onload = oppstart;
 
-      function oppstart() {
-        document.getElementById("arrInput").oninput = utfor;
-        document.getElementById("btn5").onclick = clear;
+<head>
+  <meta charset="utf-8" />
+  <title>Oppgave 5A og B</title>
+  <link rel="stylesheet" type="text/css" href="css/minstil.css" />
+  <script>
+    window.onload = oppstart;
+
+    function oppstart() {
+      document.getElementById("arrInput").oninput = utfor;
+      document.getElementById("btn5").onclick = clear;
+    }
+
+    function utfor() {
+      document.getElementById("utskrift").innerHTML = "";
+
+      var utArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+      var input = document.getElementById("arrInput").value + ",";
+      document.getElementById("arrInput").value = input; // Legger til komma når brukeren skriver noe.
+      var inputArr = input.toString().split(",");
+
+      for (var i = 0; i < inputArr.length; i++) {
+        // if-test som gir feilmelding hvis input ikke er tall.
+        if (isNaN(inputArr[i]) || document.getElementById("arrInput").value == ",,") {
+          document.getElementById("feilmelding").innerHTML = "Skriv kun tall.";
+        }
+        // Legger til inputen til det opprinnelige tomme arrayet på linje 18.
+        utArray[inputArr[i]]++
       }
 
-      function utfor() {
-        document.getElementById("utskrift").innerHTML = "";
+      for (var a = 0; a < utArray.length; a++) {
+        if (utArray[a] > 0) {
+          var utskrift = document.createElement("P");
+          utskrift.innerHTML = "Antall hendelser av " + a + ": " + "<span>" +
+            utArray[a]; + "</span>";
+          utskrift.style.width = (utArray[a] * 150) + "px"; // Setter lengden på søylene.
 
-        var utArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-        var input = document.getElementById("arrInput").value + ",";
-        document.getElementById("arrInput").value = input;
-        var inputArr = input.toString().split(",");
-
-        for (var i = 0; i < inputArr.length; i++) {
-          if (isNaN(inputArr[i]) || document.getElementById("arrInput").value == ",,") {
-            document.getElementById("feilmelding").innerHTML = "Skriv kun tall.";
+          if (a % 2 != 0) {
+            utskrift.style.backgroundColor = "orange"; // Endrer fargen på partall.
+            utskrift.style.color = "black";
           }
-          utArray[inputArr[i]]++
+          document.getElementById("utskrift").appendChild(utskrift); // Skriver ut søylene.
         }
-
-        for (var a = 0; a < utArray.length; a++) {
-          if (utArray[a] > 0) {
-            var utskrift = document.createElement("P");
-            utskrift.innerHTML = "Antall hendelser av " + a + ": " + "<span>"
-            + utArray[a]; + "</span>";
-            utskrift.style.width = (utArray[a]*150) + "px";
-
-            document.getElementById("utskrift").appendChild(utskrift);
-          }
-        }
-        document.getElementById("stats").innerHTML = "Arrayen består av " +
+      }
+      // Stats som viser hvor mange tall bruker har skrevt inn.
+      document.getElementById("stats").innerHTML = "Arrayen består av " +
         (inputArr.length - 1) + " tall.";
-      }
+    }
 
-      function clear() {
-        document.getElementById("arrInput").value = "";
-        document.getElementById("utskrift").innerHTML = "";
-        document.getElementById("stats").innerHTML = "";
-        document.getElementById("feilmelding").innerHTML = "";
-      }
-    </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <input type="text" id="arrInput" placeholder="Skriv inn tall" />
-      <button type="button" id="btn5">Clear</button>
-      <h5 id="feilmelding"></h5>
-      <h4 id="stats"></h4>
-    </div>
-    <div id="utskrift"></div>
-  </body>
+    // clear sletter alt på siden.
+    function clear() {
+      document.getElementById("arrInput").value = "";
+      document.getElementById("utskrift").innerHTML = "";
+      document.getElementById("stats").innerHTML = "";
+      document.getElementById("feilmelding").innerHTML = "";
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <input type="text" id="arrInput" placeholder="Skriv inn tall" />
+    <button type="button" id="btn5">Clear</button>
+    <h5 id="feilmelding"></h5>
+    <h4 id="stats"></h4>
+  </div>
+  <div id="utskrift"></div>
+</body>
+
 </html>

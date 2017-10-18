@@ -1,33 +1,39 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Oppgave 3</title>
-    <link rel="stylesheet" type="text/css" href="css/minstil.css" />
-    <script>
-      window.onload = utfor;
 
-      var navn = ["Per", "Olav", "Hans", "Pia", "Kari", "Nils", "Line", "Magnus", "Tom", "Ole"];
+<head>
+  <meta charset="utf-8">
+  <title>Oppgave 3</title>
+  <link rel="stylesheet" type="text/css" href="css/minstil.css" />
+  <script>
+    window.onload = utfor;
 
-      function utfor() {
-        document.getElementById("forklaring").innerHTML = "Vi trekker tre \
+    var navn = ["Per", "Olav", "Hans", "Pia", "Kari", "Nils", "Line", "Magnus", "Tom", "Ole"];
+
+    function utfor() {
+      document.getElementById("forklaring").innerHTML = "Vi trekker tre \
          tilfeldige navn fra lista:" + "<br />" + navn + ".";
-        for (i = 0; i < 3; i++) {
-          var res = Math.floor(Math.random()* navn.length);
-          if (i < 2) {
-            document.getElementById("utskrift").innerHTML += navn[res] + ", ";
-          }
+
+      for (i = 0; i < 3; i++) {
+        // Trekker tilfeldig tall fra 0 til høyeste index i array.
+        var res = Math.floor(Math.random() * navn.length);
+
+        if (i < 2) {
+          document.getElementById("utskrift").innerHTML += navn[res] + ", ";
         }
-        // For å ikke ha komma etter siste navn:
-        document.getElementById("utskrift").innerHTML += " " + navn[res];
       }
-    </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <p id="forklaring"></p>
-      <p>Og får:</p>
-      <p id="utskrift" style="font-weight: bolder;"></p>
-    </div>
-  </body>
+      // For å ikke ha komma etter siste navn:
+      document.getElementById("utskrift").innerHTML += " " + navn[res];
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <p id="forklaring"></p>
+    <p>Og får:</p>
+    <p id="utskrift" style="font-weight: bolder;"></p>
+  </div>
+</body>
+
 </html>
